@@ -12,9 +12,21 @@ type requestStatus struct {
 	Message string `json:"message"`
 }
 
+type payment struct {
+	TrackId      int32  `json:"track_id"`
+	Amount       int64  `json:"amount"`
+	Date         int64  `json:"date"`
+	CardNo       string `json:"card_no"`
+	HashedCardNo string `json:"hashed_card_no"`
+}
+
+type verify struct {
+	Date int64 `json:"date"`
+}
+
 type CreatePaymentReq struct {
 	OrderId  string `json:"order_id"`
-	Amount   int    `json:"amount"`
+	Amount   int64  `json:"amount"`
 	Name     string `json:"name"`
 	Phone    string `json:"phone"`
 	Mail     string `json:"mail"`
@@ -24,8 +36,27 @@ type CreatePaymentReq struct {
 
 type CreatePaymentRes struct {
 	ReqStatus    requestStatus
-	Id           string `json:"id"`
-	Link         string `json:"link"`
 	ErrorCode    int    `json:"error_code"`
 	ErrorMessage string `json:"error_message"`
+	Id           string `json:"id"`
+	Link         string `json:"link"`
+}
+
+type VerifyReq struct {
+	Id      string `json:"id"`
+	OrderId string `json:"order_id"`
+}
+
+type VerifyRes struct {
+	ReqStatus    requestStatus
+	ErrorCode    int    `json:"error_code"`
+	ErrorMessage string `json:"error_message"`
+	Status       int    `json:"status"`
+	TrackId      int32  `json:"track_id"`
+	Id           string `json:"id"`
+	OrderId      string `json:"order_id"`
+	Amount       int64  `json:"amount"`
+	Date         int64  `json:"date"`
+	Payment      payment
+	Verify       verify
 }
