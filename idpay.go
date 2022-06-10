@@ -71,7 +71,7 @@ func (c *Client) CreatePayment(orderId string, amount int64, callBack string, na
 
 // Verify verify payment
 func (c *Client) Verify(id string, orderId string) VerifyRes {
-	url := c.host + "/payment"
+	url := c.host + "/payment/verify"
 
 	requestBody := VerifyReq{
 		OrderId: orderId,
