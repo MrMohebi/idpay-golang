@@ -21,7 +21,7 @@ type payment struct {
 }
 
 type verify struct {
-	Date int64 `json:"date,string"`
+	Date int64 `json:"date"`
 }
 
 type CreatePaymentReq struct {
@@ -36,7 +36,7 @@ type CreatePaymentReq struct {
 
 type CreatePaymentRes struct {
 	ReqStatus    requestStatus
-	ErrorCode    int    `json:"error_code,string"`
+	ErrorCode    int    `json:"error_code"`
 	ErrorMessage string `json:"error_message"`
 	Id           string `json:"id"`
 	Link         string `json:"link"`
@@ -49,7 +49,7 @@ type VerifyReq struct {
 
 type VerifyRes struct {
 	ReqStatus    requestStatus
-	ErrorCode    int    `json:"error_code,string"`
+	ErrorCode    int    `json:"error_code"`
 	ErrorMessage string `json:"error_message"`
 	Status       int    `json:"status"`
 	TrackId      int32  `json:"track_id,string"`
